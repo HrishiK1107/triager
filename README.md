@@ -1,4 +1,4 @@
-# Triager
+# 🛡️📋Triager
 
 **Triager** is a Django-based bug bounty reporting and triage platform designed to simulate real-world vulnerability disclosure workflows. It enables authenticated users to submit structured vulnerability reports with CVSS severity scoring and proof-of-concept (PoC) files, while administrators review, validate, and triage findings through a secure backend interface.
 
@@ -79,37 +79,48 @@ This project demonstrates practical experience with **secure backend development
 
 ---
 
-## Project Structure
-
 triager/
 ├── bugbounty/
-│ ├── settings.py
-│ ├── urls.py
-│ └── wsgi.py
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
 │
 ├── reports/
-│ ├── admin.py
-│ ├── forms.py
-│ ├── models.py
-│ ├── urls.py
-│ └── views.py
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│   └── migrations/
+│       ├── __init__.py
+│       └── 0001_initial.py
 │
 ├── templates/
-│ ├── home.html
-│ ├── submit.html
-│ ├── dashboard.html
-│ ├── leaderboard.html
-│ └── registration/
-│ └── login.html
+│   ├── base.html
+│   ├── home.html
+│   ├── submit.html
+│   ├── dashboard.html
+│   ├── leaderboard.html
+│   └── registration/
+│       └── login.html
 │
 ├── static/
-│ └── css/
+│   └── css/
+│       └── dark-theme.css
+│
+├── media/
+│   └── pocs/
 │
 ├── manage.py
-└── requirements.txt
+├── db.sqlite3
+├── requirements.txt
+└── README.md
 
-
----
+--- 
 
 ## Security Considerations
 
@@ -138,3 +149,4 @@ Disclaimer
 This project is intended for educational and simulation purposes only. It does not represent a production-ready bug bounty platform and should not be exposed to the public internet without further security hardening.
 
 ---
+

@@ -79,52 +79,6 @@ This project demonstrates practical experience with **secure backend development
 
 ---
 
-## Project Structure
-
-triager/
-├── bugbounty/                 # Django project configuration
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-│
-├── reports/                   # Core application (bug reporting & triage)
-│   ├── __init__.py
-│   ├── admin.py               # Admin panel configuration
-│   ├── apps.py
-│   ├── forms.py               # Bug submission forms
-│   ├── models.py              # BugReport model (CVSS, PoC, status)
-│   ├── urls.py                # App-level routing
-│   ├── views.py               # Submission, dashboard, leaderboard logic
-│   ├── tests.py
-│   └── migrations/
-│       ├── __init__.py
-│       └── 0001_initial.py
-│
-├── templates/                 # HTML templates
-│   ├── base.html
-│   ├── home.html
-│   ├── submit.html
-│   ├── dashboard.html
-│   ├── leaderboard.html
-│   └── registration/
-│       └── login.html
-│
-├── static/                    # Static assets
-│   └── css/
-│       └── dark-theme.css
-│
-├── media/                     # Uploaded files (git-ignored)
-│   └── pocs/                  # Proof-of-concept uploads
-│
-├── manage.py                  # Django entry point
-├── requirements.txt           # Python dependencies
-├── .gitignore
-└── README.md
-
----
-
 ## Security Considerations
 
 - CSRF protection enabled on all forms
@@ -152,6 +106,7 @@ Disclaimer
 This project is intended for educational and simulation purposes only. It does not represent a production-ready bug bounty platform and should not be exposed to the public internet without further security hardening.
 
 ---
+
 
 
 

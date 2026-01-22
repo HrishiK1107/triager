@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>🐞 Bug Report Details</h2>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <h4 class="card-title">{{ report.title }}</h4>
+    <p class="card-text"><strong>Description:</strong> {{ report.description }}</p>
+    <p class="card-text"><strong>CVSS Score:</strong> {{ report.cvss_score }}</p>
+    <p class="card-text"><strong>Status:</strong> {{ report.status }}</p>
+    <p class="card-text"><strong>Reward:</strong> ₹{{ report.reward }}</p>
+    <p class="card-text"><strong>Submitted By:</strong> {{ report.submitted_by.username }}</p>
+    <p class="card-text"><strong>Submitted On:</strong> {{ report.submitted_at }}</p>
+
+    {% if report.poc_file %}
+      <p><strong>Proof of Concept:</strong>
+      <a href="{{ report.poc_file.url }}" download>Download File</a></p>
+    {% else %}
+      <p><strong>Proof of Concept:</strong> Not uploaded</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

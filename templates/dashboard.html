@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4 display-5 fw-bold text-center">📋 Your Submitted Bug Reports</h2>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+{% if reports %}
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for report in reports %}
+  <div class="col">
+    <div class="card shadow-sm h-100 border-0 hover-card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="{% url 'bug_detail' report.id %}" class="text-decoration-none text-dark fw-semibold">
+            🐞 {{ report.title }}
+          </a>
+        </h5>
+        <p class="card-text text-muted small mb-2">Submitted on {{ report.submitted_at|date:"M d, Y" }}</p>
+        <p class="mb-1"><strong>CVSS:</strong> 
+          <span class="badge 
+            {% if report.cvss_score >= 9 %} bg-dark
+            {% elif report.cvss_score >= 7 %} bg-danger
+            {% elif report.cvss_score >= 4 %} bg-warning text-dark
+            {% else %} bg-success
+            {% endif %}
+          ">
+            {{ report.cvss_score }}
+          </span>
+        </p>
+        <p class="mb-1"><strong>Status:</strong> 
+          <span class="badge 
+            {% if report.status == 'Approved' %} bg-success 
+            {% elif report.status == 'Rejected' %} bg-danger 
+            {% elif report.status == 'In Progress' %} bg-warning text-dark
+            {% else %} bg-secondary 
+            {% endif %}
+          ">
+            {{ report.status }}
+          </span>
+        </p>
+        <p class="mb-0"><strong>Reward:</strong> 
+          <span class="badge bg-info text-dark">₹{{ report.reward }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+  <div class="text-center text-muted mt-5">You haven't submitted any reports yet.</div>
+{% endif %}
+
+<style>
+  .hover-card:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-3px);
+    transition: all 0.2s ease-in-out;
+  }
+</style>
+{% endblock %}

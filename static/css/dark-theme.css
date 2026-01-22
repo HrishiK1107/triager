@@ -1,0 +1,153 @@
+/* Root Dark Mode Variables */
+[data-theme="dark"] {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --text: #e0e0e0;
+    --muted: #999;
+    --primary: #0d6efd;
+    --card-bg: #1e1e1e;
+    --input-bg: #2c2c2c;
+    --border: #3a3a3a;
+    --btn-bg: #0d6efd;
+    --btn-text: #fff;
+    --highlight: #ffc107;
+}
+
+/* Body Background and Text */
+[data-theme="dark"] body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* Headings */
+[data-theme="dark"] h1, h2, h3, h4, h5, h6 {
+    color: var(--text);
+}
+
+/* Navbar */
+[data-theme="dark"] .navbar {
+    background-color: var(--surface) !important;
+    border-bottom: 1px solid var(--border);
+}
+[data-theme="dark"] .navbar-brand,
+[data-theme="dark"] .nav-link {
+    color: var(--text) !important;
+}
+
+/* General Container, Card, Alert */
+[data-theme="dark"] .card,
+[data-theme="dark"] .container,
+[data-theme="dark"] .alert,
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: var(--card-bg) !important;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Inputs & Forms */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+    background-color: var(--input-bg) !important;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Make placeholder text visible */
+[data-theme="dark"] ::placeholder {
+    color: var(--muted);
+}
+
+/* Fix CVSS slider & similar elements */
+[data-theme="dark"] input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    background: var(--input-bg);
+    border: none;
+    height: 4px;
+}
+[data-theme="dark"] input[type="range"]::-webkit-slider-thumb,
+[data-theme="dark"] input[type="range"]::-moz-range-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--highlight);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* File input and file selector button */
+[data-theme="dark"] input[type="file"] {
+    background-color: var(--input-bg);
+    color: var(--text);
+}
+[data-theme="dark"] input[type="file"]::file-selector-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Buttons */
+[data-theme="dark"] .btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+}
+[data-theme="dark"] .btn-outline-light {
+    color: var(--text);
+    border-color: var(--border);
+}
+[data-theme="dark"] .btn-outline-light:hover {
+    background-color: var(--border);
+    color: var(--text);
+}
+
+/* Alerts */
+[data-theme="dark"] .alert-primary {
+    background-color: #1f2d4a;
+    color: #c9dcff;
+}
+[data-theme="dark"] .alert-warning {
+    background-color: #4a3a1f;
+    color: #ffe3c9;
+}
+[data-theme="dark"] .alert-info {
+    background-color: #1f3a4a;
+    color: #c9f2ff;
+}
+
+/* Table Styles */
+[data-theme="dark"] table,
+[data-theme="dark"] tr,
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+    background-color: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+/* Badges, Chips, Tags */
+[data-theme="dark"] .badge {
+    background-color: var(--highlight);
+    color: #000;
+}
+
+/* Optional: Focus style */
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary);
+    border-color: var(--primary);
+}

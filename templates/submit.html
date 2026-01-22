@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">📋 Submit a Bug Report</h4>
+      </div>
+      <div class="card-body">
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="id_title" class="form-label">Title <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="id_title" name="title" required placeholder="Example: SQL Injection in login form">
+          </div>
+
+          <div class="mb-3">
+            <label for="id_description" class="form-label">Description <span class="text-danger">*</span></label>
+            <textarea class="form-control" id="id_description" name="description" rows="5" required placeholder="Describe the issue, impact, and steps to reproduce."></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="cvssSlider" class="form-label">CVSS Score <span class="text-danger">*</span></label>
+            <input type="range" class="form-range" min="0" max="10" step="0.1" id="cvssSlider" name="cvss_score" required oninput="cvssValue.innerText = this.value">
+            <div>Selected Score: <strong id="cvssValue">5.0</strong></div>
+          </div>
+
+          <div class="mb-3">
+            <label for="id_poc_file" class="form-label">Proof of Concept File</label>
+            <div class="border rounded p-3 text-center bg-light" 
+                 ondragover="event.preventDefault()" 
+                 ondrop="handleDrop(event)">
+              <p>Drag & drop a PoC file here (PDF, TXT, ZIP, or MD)</p>
+              <input type="file" name="poc_file" id="id_poc_file" class="form-control mt-2" accept=".pdf,.txt,.zip,.md">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100 mt-3">Submit Bug Report</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleDrop(e) {
+    e.preventDefault();
+    const fileInput = document.getElementById('id_poc_file');
+    fileInput.files = e.dataTransfer.files;
+  }
+</script>
+{% endblock %}

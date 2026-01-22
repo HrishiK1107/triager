@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+  <h1 class="display-5 fw-bold">🐞 Welcome to BountyBoard</h1>
+  <p class="lead">Your command center for submitting and reviewing cybersecurity vulnerabilities.</p>
+</div>
+
+<hr class="my-4">
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <h3 class="fw-bold">🚀 Top Vulnerabilities This Week</h3>
+    {% if top_reports %}
+      <ul class="list-group mb-4">
+        {% for report in top_reports %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ report.title }}</strong><br>
+              <small class="text-muted">Score: {{ report.cvss_score }}</small>
+            </div>
+            <a href="{% url 'bug_detail' report.id %}" class="btn btn-sm btn-outline-dark">View</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="alert alert-warning">No reports have been submitted yet.</div>
+    {% endif %}
+
+    <h4 class="fw-bold mt-5">💡 Security Fact of the Day</h4>
+    <div class="alert alert-info fs-5 mt-2">
+      {{ random_fact }}
+    </div>
+  </div>
+</div>
+{% endblock %}

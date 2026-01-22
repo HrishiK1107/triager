@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4 display-5 fw-bold text-center">🏆 Top Hunters Leaderboard</h2>
+
+<table class="table table-bordered table-striped table-hover fs-5">
+  <thead class="table-dark">
+    <tr>
+      <th class="text-center">Rank</th>
+      <th>User</th>
+      <th class="text-center">Reports</th>
+      <th class="text-center">Avg. CVSS</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr class="align-middle">
+      <td class="text-center fs-3">
+        {% if forloop.counter == 1 %}
+          🥇
+        {% elif forloop.counter == 2 %}
+          🥈
+        {% elif forloop.counter == 3 %}
+          🥉
+        {% else %}
+          <span class="fw-bold">{{ forloop.counter }}</span>
+        {% endif %}
+      </td>
+      <td class="fw-semibold">{{ user.username }}</td>
+      <td class="text-center">
+        <span class="badge bg-primary rounded-pill px-3 py-2 fs-6">
+          {{ user.report_count }}
+        </span>
+      </td>
+      <td class="text-center">
+        {% if user.avg_cvss %}
+          <span class="badge rounded-pill px-3 py-2 fs-6
+            {% if user.avg_cvss >= 9 %} bg-dark
+            {% elif user.avg_cvss >= 7 %} bg-danger
+            {% elif user.avg_cvss >= 4 %} bg-warning text-dark
+            {% else %} bg-success
+            {% endif %}
+          ">
+            {{ user.avg_cvss|floatformat:1 }}
+          </span>
+        {% else %}
+          <span class="text-muted">—</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

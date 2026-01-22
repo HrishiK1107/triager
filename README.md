@@ -115,7 +115,7 @@ triager/
 │   └── css/
 │       └── dark-theme.css
 │
-├── media/                     # Uploaded files (ignored in git)
+├── media/                     # Uploaded files (git-ignored)
 │   └── pocs/                  # Proof-of-concept uploads
 │
 ├── manage.py                  # Django entry point
@@ -123,7 +123,6 @@ triager/
 ├── .gitignore
 └── README.md
 
---- 
 
 ## Security Considerations
 
@@ -152,5 +151,6 @@ Disclaimer
 This project is intended for educational and simulation purposes only. It does not represent a production-ready bug bounty platform and should not be exposed to the public internet without further security hardening.
 
 ---
+
 
 
